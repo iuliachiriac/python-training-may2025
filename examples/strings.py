@@ -23,6 +23,13 @@ print(message)
 message = "{} is {} years old".format(name, age)
 print(message)
 
+message = "{0} is {1} years old.\nHi, {0}!".format(name, age)
+print(message)
+
+message = "{name} is {years} years old.\nHi, {name}!".format(
+    name=name, years=age)
+print(message)
+
 message = ("{:_^15} is {} years old and has a height"
            " of {:.2f} m".format(name.capitalize(), age * 2, height))
 print(message)
