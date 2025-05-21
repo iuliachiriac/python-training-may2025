@@ -4,10 +4,12 @@ X = 100
 def func(a):
     b = "b"
     # sum = 0  # shadowing of built-in name
+    # global X  # use global keyword to use global variable (and modify it)
     # X = 0  # shadowing of global name
 
     def inner(c):
         d = "d"
+        # nonlocal a
         # a = "test"
         # X = "test"
         print("--- local inner() ---")
