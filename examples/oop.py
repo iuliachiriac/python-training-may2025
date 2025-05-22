@@ -15,6 +15,15 @@ class Person:
     def add_last_name(self, last_name):
         self.name = f"{self.name} {last_name}"
 
+    def __str__(self):
+        return f"<name='{self.name}' date_of_birth='{self.date_of_birth}'>"
+
+    def __lt__(self, other):
+        return self.date_of_birth > other.date_of_birth
+
+    def __le__(self, other):
+        return self.date_of_birth >= other.date_of_birth
+
 
 if __name__ == "__main__":
     p1 = Person("Anna", date(1986, 1, 13))
@@ -26,3 +35,6 @@ if __name__ == "__main__":
 
     p1.greet("hi")
     p2.greet("hello")
+
+    print("Anna is younger than Mike:", p1 < p2)
+    print("Anna is older than Mike:", p1 >= p2)
