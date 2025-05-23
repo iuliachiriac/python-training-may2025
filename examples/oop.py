@@ -1,3 +1,4 @@
+import random
 from datetime import date
 
 
@@ -57,6 +58,26 @@ class Person:
         return self._date_of_birth >= other.date_of_birth
 
 
+class Student(Person):
+    count = 0
+
+    def __init__(self, name, date_of_birth, university):
+        super().__init__(name, date_of_birth)
+        self.university = university
+
+    def __str__(self):
+        str_rep = super().__str__()
+        univ_str = f" university='{self.university}'"
+        return str_rep[:-1] + univ_str + str_rep[-1]
+
+    def greet(self, greeting):
+        print(f"{greeting.capitalize()}! I am {self.name} and "
+              f"I study at {self.university}.")
+
+    def get_grade(self, subject):
+        return random.randint(3, 10)
+
+
 if __name__ == "__main__":
     p1 = Person("Anna", date(1986, 1, 13))
     p2 = Person("Mike", date(2001, 6, 24))
@@ -96,3 +117,14 @@ if __name__ == "__main__":
         print(ex)
 
     print(f"{p1.name} is {p1.age} years old.")
+
+    s1 = Student("Sally", date(1970, 11, 5), "MIT")
+    print(s1, repr(s1))
+    print(f"{s1.name} is {s1.age} years old. "
+          f"{s1.name} is younger than {p1.name}: {s1 < p1}. "
+          f"{s1.name} studies at {s1.university}. "
+          f"{s1.name} got a {s1.get_grade('Maths')} in Maths.")
+    s1.greet("hi")
+
+    print(Student.count, Person.count)
+    print(Student.mro())  # method resolution order
